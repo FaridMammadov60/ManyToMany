@@ -1,0 +1,31 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul>
+        <li> BookName @Model.Name</li>
+
+       @foreach (var bookAuthor in Model.BookAuthors)
+        {
+            <span> @bookAuthor.Author.Name</span> 
+            <span>@bookAuthor.Author.SocialAccount.Instagram</span> <br />
+        }
+        @foreach (var image in Model.Images)
+        {
+            @if (image.IsMain)
+            {
+             <img width="100" src="~/img/@image.ImageUrl" />  <br />
+            }
+        }
+        @foreach (var g in Model.BookGenres)
+        {
+          <span>@g.Genre.Name</span>  
+        }
+        <a class="btn btn-primary" asp-action="index">Go Back</a>
+    <hr />
+    
+</ul>
+
+

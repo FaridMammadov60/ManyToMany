@@ -1,0 +1,33 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul>
+    @foreach (var item in Model)
+{
+        <li> BookName @item.Name</li>
+
+        foreach (var bookAuthor in item.BookAuthors)
+        {
+            <span> @bookAuthor.Author.Name</span> 
+            <span>@bookAuthor.Author.SocialAccount.Instagram</span> <br />
+        }
+        foreach (var image in item.Images)
+        {
+            if (image.IsMain)
+            {
+                <span>@image.ImageUrl</span> <br />
+            }
+        }
+        foreach (var g in item.BookGenres)
+        {
+          <span>@g.Genre.Name</span>  
+        }
+    <hr />
+    
+}
+</ul>
+
+

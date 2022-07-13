@@ -1,0 +1,56 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create category form</h4>
+
+                  <form class="forms-sample"  method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label asp-for="Name"></label>
+                      <input asp-for="Name" class="form-control"  placeholder="Name">
+                      <span  class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label asp-for="Price" ></label>
+                      <input asp-for="Price"  class="form-control"  rows="4"></input>
+                      <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+
+                     <label asp-for="AuthorIds"></label>
+                     <select asp-for="AuthorIds" class="form-select" asp-items="@ViewBag.Authors"   aria-label="Default select example">
+                      <option selected>Select Author</option>
+                    </select>
+
+                      <label asp-for="GenreIds"></label>
+                     <select asp-for="GenreIds" class="form-select" asp-items="@ViewBag.Genres"   aria-label="Default select example">
+                      <option selected>Select Genre</option>
+                    </select>
+
+                     <div class="form-group">
+                      <label asp-for="Photos"></label>
+                      <input asp-for="Photos" class="form-control"  placeholder="Name">
+                      <span  class="text-danger" asp-validation-for="Photos"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a class="btn btn-dark" asp-action="index"> go back</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+</div>
+
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+  
+    <partial name="_ValidationPartial"/>
+}
+
